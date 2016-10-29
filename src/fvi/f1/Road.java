@@ -4,6 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Road extends JPanel implements ActionListener {
     Timer mainTmier = new Timer(20,this); // go Car
@@ -13,9 +15,20 @@ public class Road extends JPanel implements ActionListener {
     Player p = new Player();
 
   public Road(){
-
       mainTmier.start();
+      addKeyListener(new MyKeyAdapter());
+      setFocusable(true);
    }
+
+   private class MyKeyAdapter extends KeyAdapter{
+       public  void  keyPressed(KeyEvent e){
+       p.keyPressed(e);}
+
+       public void keyReleased(KeyEvent e){
+           p.keyReleased(e);
+       }
+   }
+
 
 
     public  void  paint(Graphics g) {
