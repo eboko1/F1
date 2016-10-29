@@ -6,7 +6,7 @@ public class Main {
         JFrame f= new JFrame("Java F1");
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setSize(500,400);
-        f.add(new Roat() );
+        f.add(new Road() );
         f.setVisible(true);
 
     }
