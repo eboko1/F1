@@ -3,6 +3,8 @@ package fvi.f1;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.io.FileInputStream;
+
 import javafx.scene.shape.Rectangle;
 
 public class Player {
@@ -22,6 +24,8 @@ public class Player {
 
     int layer1= 0;
     int layer2= 1100;
+
+
 
     public void move() {
         s = s + v;
@@ -70,4 +74,6 @@ public class Player {
         }
 
     }
+
+
 }

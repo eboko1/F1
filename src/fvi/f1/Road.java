@@ -14,7 +14,7 @@ import java.util.*;
 import java.util.List;
 
 public class Road extends JPanel implements ActionListener,Runnable {
-    Timer mainTmier = new Timer(20, this); // go Car
+    Timer mainTimer = new Timer(20, this); // go Car
 
     Image img = new ImageIcon("res/bg_road.jpg").getImage();
 
@@ -23,12 +23,16 @@ public class Road extends JPanel implements ActionListener,Runnable {
 
     Thread enemiesFactory = new Thread(this);// новий поток
 
+    Thread audioThread = new Thread(new AudioThread());
+
+
     List<Enemy> enemies = new ArrayList<Enemy>();
 
 
     public Road() {
-        mainTmier.start();
+        mainTimer.start();
         enemiesFactory.start();
+        audioThread.start();
         addKeyListener(new MyKeyAdapter());
         setFocusable(true);
     }
@@ -73,6 +77,14 @@ public class Road extends JPanel implements ActionListener,Runnable {
         p.move();
         repaint();// +перемалювати+
        // testCollisionWithEnemies();
+        testWin();
+    }
+
+    private void testWin() {
+        if (p.s>20000){
+           JOptionPane.showMessageDialog(null,"Ви вийграли!!! ");
+            System.exit(0);
+        }
     }
 
    /* public void testCollisionWithEnemies(){
