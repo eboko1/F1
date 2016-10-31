@@ -3,7 +3,7 @@ package fvi.f1;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-
+import javafx.scene.shape.Rectangle;
 
 public class Player {
     public static final int MAX_V=50;
@@ -55,6 +55,11 @@ public class Player {
             dy=-5;
         }
     }
+
+    public Rectangle getRect(){// прямокутники
+        return new Rectangle (x,y,317,230);
+    }
+
     public void keyReleased (KeyEvent e){
         int key=e.getKeyCode();
         if (key==KeyEvent.VK_RIGHT || key==KeyEvent.VK_LEFT){
@@ -63,5 +68,6 @@ public class Player {
         if (key==KeyEvent.VK_UP ||key==KeyEvent.VK_DOWN ){
             dy=0;
         }
+
     }
 }

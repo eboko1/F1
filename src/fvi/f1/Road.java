@@ -1,7 +1,10 @@
 package fvi.f1;
 
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.Timer;
+import javafx.scene.shape.Rectangle;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -41,11 +44,17 @@ public class Road extends JPanel implements ActionListener,Runnable {
     }
 
     public void paint(Graphics g) {
-        g = (Graphics2D) g;
+        g = (Graphics2D)g;
         g.drawImage(img, p.layer1, 0, null);
         g.drawImage(img, p.layer2, 0, null);
-
         g.drawImage(p.img, p.x, p.y, null);
+
+        double v =(200/Player.MAX_V)*p.v; //
+        g.setColor(Color.WHITE);
+        Font font = new Font("Arial",Font.BOLD,20);
+        g.setFont(font);
+        g.drawString("Скорость: " + v +" км/год ", 100,30);
+
         Iterator <Enemy> i= enemies.iterator();
         while (i.hasNext()) {
             Enemy e = i.next();
@@ -63,7 +72,20 @@ public class Road extends JPanel implements ActionListener,Runnable {
     public void actionPerformed(ActionEvent e) {
         p.move();
         repaint();// +перемалювати+
+       // testCollisionWithEnemies();
     }
+
+   /* public void testCollisionWithEnemies(){
+        Iterator <Enemy> i= enemies.iterator();
+       while (i.hasNext()) {
+            Enemy e = i.next();
+            if (p.getRect().intersects(e.getRect())) {
+                JOptionPane.showMessageDialog(null," Ви програли!!! ");
+                System.exit(1);
+                }
+        }
+
+    }*/
 
     public  void run(){
         while (true){
