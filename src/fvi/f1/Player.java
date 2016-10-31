@@ -9,7 +9,9 @@ public class Player {
     public static final int MAX_V=50;
     public static final int MAX_TOP=10; // верхня координата
     public static final int MAX_BUTTOM=470;// нижня координата
+
     Image img = new ImageIcon("res/car_player.png").getImage();
+
     int v=0;
     int dv=0;
     int s=0;
