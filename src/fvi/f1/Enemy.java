@@ -15,7 +15,7 @@ public class Enemy {
     Road road;
 
     public Rectangle getRect(){
-        return new Rectangle(x,y,283,144);
+        return new Rectangle(x,y,282,144);
     }
 
     public  Enemy(int x, int y, int v, Road road){
